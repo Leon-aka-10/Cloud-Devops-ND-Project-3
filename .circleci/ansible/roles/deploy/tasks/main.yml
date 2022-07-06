@@ -28,7 +28,7 @@
     become: yes
     unarchive:
       src: ~/project/.circleci/ansible/roles/deploy/files/artifact.tar.gz
-      dest: ~
+      dest: .
 
   - name: start app
     become: yes
