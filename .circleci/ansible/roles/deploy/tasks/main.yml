@@ -6,7 +6,7 @@
 
   - name: Copy artifact.tar.gz to EC2
     copy:
-      src: "files/artifact.tar.gz"
+      src: "project/.circleci/ansible/roles/deploy/files/artifact.tar.gz"
       dest: "~/artifact.tar.gz"
       
   - name: "Extracts Artifact"
