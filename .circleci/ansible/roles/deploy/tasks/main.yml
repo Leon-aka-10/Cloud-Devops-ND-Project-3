@@ -7,8 +7,8 @@
   - name: Copy artifact.tar.gz to EC2
     copy:
       src: "files/artifact.tar.gz"
-      dest: "~/"
+      dest: "~/artifact.tar.gz"
       
   - name: "Extracts Artifact"
     shell: |
-      tar -xvfz artifact.tar.gz
+      tar -xvfz ~/artifact.tar.gz
