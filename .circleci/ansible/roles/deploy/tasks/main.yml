@@ -5,10 +5,10 @@
       ls -all
 
   - name: "Copy backend build folder to EC2"
-  become: yes
-  unarchive:
-    src: /root/project/artifact.tar.gz
-    dest: ~
+    become: yes
+    unarchive:
+      src: /root/project/artifact.tar.gz
+      dest: ~
       
   - name: "Extracts Artifact"
     shell: |
