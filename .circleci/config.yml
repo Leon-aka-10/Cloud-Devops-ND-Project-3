@@ -34,7 +34,7 @@ commands:
             npm install
             npm run build
             npm run migrations:revert
-            
+
 jobs:
   build-frontend:
     docker:
@@ -301,7 +301,9 @@ jobs:
             cd ..
             # Zip the directory
             tar -C backend -czvf artifact.tar.gz .
-            ls -all
+            mkdir ~/project/.circleci/ansible/roles/deploy/files
+            cp artifact.tar.gz ~/project/.circleci/ansible/roles/deploy/files/
+            ls ~/project/.circleci/ansible/roles/deploy/files/
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
@@ -309,7 +311,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/artifact.tar.gz 
+            - project/.circleci/ansible/roles/deploy/files/artifact.tar.gz 
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
       - revert-migrations:
