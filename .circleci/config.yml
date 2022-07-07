@@ -330,8 +330,8 @@ jobs:
               --output text) 
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
-            if curl -s "${API_URL}/api/status" | grep "ok"
-            # if curl -s http://google.com
+            # if curl -s "${API_URL}/api/status" | grep "ok"
+            if curl -s http://google.com
             then
                 return 0
             else
@@ -443,7 +443,7 @@ workflows:
           requires: [run-migrations]
       - smoke-test:
           requires: [deploy-backend, deploy-frontend]
-      #- cloudfront-update:
-          #requires: [smoke-test]
-      #- cleanup:
-          #requires: [cloudfront-update]
+      - cloudfront-update:
+          requires: [smoke-test]
+      - cleanup:
+          requires: [cloudfront-update]
